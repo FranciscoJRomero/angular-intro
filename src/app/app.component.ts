@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Article } from './article/article.model';
 
 @Component({
   selector: 'app-root',
@@ -6,9 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-redit';
+  articles: Article[];
+  constructor() {
+    this.articles = new Array<Article>();
+  }
   addArticle(title: HTMLInputElement, link: HTMLInputElement): boolean {
     console.log(`Adding article title: ${title.value} and link: ${link.value}`);
+    console.log('article count: ' + this.articles.length);
+    this.articles.push(new Article(title.value, link.value , 0));
+    title.value = '';
+    link.value = '';
     return false;
   }
 }
