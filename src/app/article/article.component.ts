@@ -11,12 +11,12 @@ export class ArticleComponent implements OnInit {
   constructor() {
     this.article = new Article('Angular', 'http://angular.io', 10);
   }
-  voteUp() {
-    this.article.votes += 1;
+  voteUp(): boolean {
+    this.article.voteUp();
     return false;
   }
-  voteDown() {
-    this.article.votes -= 1;
+  voteDown(): boolean {
+    this.article.voteDown();
     return false;
   }
   ngOnInit() {
